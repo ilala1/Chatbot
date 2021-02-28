@@ -24,7 +24,7 @@ const loadingState = (dispatch) => {
 const timeoutForResponse = (dispatch, type, payload) => {
     setTimeout(() => {
         dispatch({ type, payload})
-      }, 2000);
+      }, 1000);
 }
 
 // sends message to bot - local file

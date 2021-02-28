@@ -15,12 +15,12 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
     const endOfMessages = useRef(null);
 
     const scrollToBottom = () => {
-        endOfMessages.current.scrollIntoView({behavior: 'smooth'})
+        endOfMessages.current.scrollIntoView({ behavior: 'smooth' })
     }
 
     useEffect(scrollToBottom, [chat]);
 
-    
+
     const handleClick = async (e) => {
         const code = e.keyCode || e.which;
         if (code === 13) {
@@ -35,36 +35,41 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
         <div className='chatBoxContainer'>
             <h1 className="title">Welcome to chatbot</h1>
             <div className="historyContainer">
-            <div className="chat">
-                <div className="chatBubble">
-                    <img className="botIcon" src={bot} alt="bot icon" />
-                    <div className='bot'>Hi, I'm bot!</div>
+                <div className="chat">
+                    <div className="chatBubble">
+                        <img className="botIcon" src={bot} alt="bot icon" />
+                        <div className='bot'>Hi, I'm bot!</div>
+
+                    </div>
+                    {chat.length === 0 ? "" : chat.map((msg) =>
+                        <div key={uuid()} className="chatBubble">
+                            {msg.type === 'bot'
+                                ?
+                                <img className="botIcon" src={bot} alt="bot icon" />
+                                :
+                                msg.type === 'user'
+                                    ?
+                                    <img className="userIcon" src={user} alt="user icon" />
+                                    :
+                                    <img className="botIcon" src={bot} alt="bot icon" />
+                            }
+                            <div className={msg.type}>{msg.message}</div>
+                        </div>
+                    )}
+                    <div ref={endOfMessages}></div>
+                </div>
+
+            </div>
+                <div className="chatInputWrapper">
+                    <input id="chatBoxInput"
+                    className="chatboxInputField"
+                        onChange={(e) => setMessage(e.target.value)}
+                        onKeyPress={handleClick}
+                        value={message}>
+                    </input>
+                    <i className="far fa-paper-plane"></i>
 
                 </div>
-                {chat.length === 0 ? "" : chat.map((msg) =>
-                    <div key={uuid()} className="chatBubble">
-                        {msg.type === 'bot'
-                            ?
-                            <img className="botIcon" src={bot} alt="bot icon" />
-                            :
-                            msg.type === 'user'
-                                ?
-                                <img className="userIcon" src={user} alt="user icon" />
-                                :
-                                <img className="botIcon" src={bot} alt="bot icon" />
-                        }
-                        <div className={msg.type}>{msg.message}</div>
-                    </div>
-                )}
-                <div ref={endOfMessages}></div>
-            </div>
-                <input id="chatBox"
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyPress={handleClick}
-                    value={message}>
-                </input>
-
-            </div>
         </div>
     )
 };

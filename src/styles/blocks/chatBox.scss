@@ -7,6 +7,7 @@
 	align-items: center;
 	.chatBoxContainer {
 		height: 30rem;
+		width: 30rem;
 		max-width: 25rem;
 		display: inline-block;
 		display: flex;
@@ -22,25 +23,36 @@
 			flex-direction: column;
 			justify-content: space-between;
 			height: 100%;
+			width: 100%;
 			overflow-y: scroll;
-			.internal {
-				animation: blinker 1s linear infinite;
-				text-align: right;
-				@keyframes blinker {
-					50% {
-						opacity: 0;
-					}
-				}
-			}
-			input {
+			// overflow-x: hidden;
+		}
+		.chatInputWrapper {
+			margin-top: 1rem;
+			border-top: 1px solid #000;
+			padding: 0.5rem 0;
+			display: flex;
+			align-items: center;
+			.chatboxInputField {
+				padding: 0.5rem 1rem;
+				padding-left: 1rem;
+				border-radius: 0.5rem;
 				border: 0;
 				height: 1.1rem;
-				width: 30rem;
+				width: 90%;
 				outline: none;
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				font-size: 1.2rem;
-				margin-top: 2rem;
+				background: $inputBg;
 			}
+			.fa-paper-plane {
+				padding-left: 0.25rem;
+			}
+		}
+	}
+	@media #{$media-minimum} {
+		.chatBoxContainer {
+			padding: 2.5rem $padding-sides-minimum;
 		}
 	}
 }
