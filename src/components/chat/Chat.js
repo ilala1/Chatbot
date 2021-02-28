@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 
@@ -12,6 +12,13 @@ import user from '../../images/user.png';
 const Chat = ({ chat, userMessage, sendMessage }) => {
     // HANDLE USERS MESSAGE
     const [message, setMessage] = useState("");
+    const endOfMessages = useRef(null);
+
+    const scrollToBottom = () => {
+        endOfMessages.current.scrollIntoView({behavior: 'smooth'})
+    }
+
+    useEffect(scrollToBottom, [chat]);
 
     
     const handleClick = async (e) => {
@@ -23,6 +30,7 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
             setMessage("")
         }
     }
+
     return (
         <div className='chatBoxContainer'>
             <h1 className="title">Welcome to chatbot</h1>
@@ -48,6 +56,7 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
                         <div className={msg.type}>{msg.message}</div>
                     </div>
                 )}
+                <div ref={endOfMessages}></div>
             </div>
                 <input id="chatBox"
                     onChange={(e) => setMessage(e.target.value)}
