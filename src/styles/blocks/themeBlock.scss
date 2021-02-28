@@ -1,0 +1,114 @@
+.container {
+	&.dark {
+		background-color: $dark-bg;
+		.themeIcon {
+			.themeTitle {
+				color: #fff;
+			}
+			.fas {
+				color: #f9d71c;
+			}
+		}
+		.chatBoxContainer {
+			background: $chatboxDarkBg;
+			.historyContainer {
+				border-bottom: 1px solid #fff;
+				input {
+					color: #fff;
+					background: $chatboxDarkBg;
+				}
+			}
+		}
+	}
+	&.light {
+		background-color: $light-bg;
+		.themeIcon {
+			.fas {
+				color: $chatboxDarkBg;
+			}
+		}
+		.chatBoxContainer {
+			background: $chatboxLightBg;
+			.historyContainer {
+				border-bottom: 1px solid #000;
+				input {
+					color: #000;
+					background: $chatboxLightBg;
+				}
+			}
+		}
+	}
+	text-align: center;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.themeIcon {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		// width: 13rem;
+		height: 8rem;
+		padding: 1rem 2rem;
+		.themeTitle {
+			padding-top: 1rem;
+		}
+		.fas {
+			font-size: 2rem;
+			color: #f9d71c;
+		}
+	}
+}
+
+#time {
+	position: absolute;
+	right: 100vw;
+
+	+ label {
+		--i: 0;
+		--j: calc(1 - var(--i));
+		display: grid;
+		grid-gap: $p $g;
+		overflow: hidden;
+		padding: $p;
+		height: $d;
+		border-radius: 0.5 * $d + $p;
+		background: hsl(199, 98%, calc(var(--j) * 48%));
+		color: transparent;
+		user-select: none;
+		transition: 0.3s;
+		cursor: pointer;
+		&:before,
+		&:after {
+			width: $d;
+			height: $d;
+			transition: inherit;
+			content: "";
+		}
+
+		&:before {
+			transform-origin: 20% 20%;
+			transform: translate(calc(var(--i) * (100% + #{$g})))
+				scale(calc(1 - var(--i) * 0.7));
+			background: $yellow;
+			border-radius: 2rem;
+		}
+
+		&:after {
+			grid-column: 2;
+			border-radius: 50%;
+			transform: translatey(calc(var(--i) * (-100% - #{$p})));
+			background: radial-gradient(
+				circle at 19% 19%,
+				transparent 41%,
+				#fff 43%
+			);
+		}
+	}
+
+	&:checked + label {
+		--i: 1;
+	}
+}

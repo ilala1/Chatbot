@@ -13,26 +13,24 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            darkTheme: true
+            darkTheme: false
         };
     }
 
     handleThemeChange = () => {
-        console.log('pre ' + this.state.darkTheme)
         this.setState(prevState => ({
             darkTheme: !prevState.darkTheme
         }));
-        console.log(this.state.darkTheme)
     }
 
     render() {
         return (
             <Provider store={store}>
                 <div className={`container ${this.state.darkTheme ? 'dark' : 'light'}`}>
-                    <div className='themeIcon' onClick={this.handleThemeChange}>
+                    <div className='themeIcon'>
                         <p className="themeTitle">Click to change theme</p>
-                        {this.state.darkTheme ? <i class="fas fa-sun"></i> : <i class="fas fa-moon"></i>}
-                        {this.state.darkTheme ? <p>Dark Theme</p> : <p>Light Theme</p>}
+                        <input onClick={this.handleThemeChange} type='checkbox' id='time' />
+                        <label htmlFor='time'>Night</label>
                     </div>
                     <Chat />
                 </div>
@@ -40,19 +38,5 @@ class App extends Component {
         )
     }
 }
-
-// const App = () => {
-//   const changeTheme = () => {
-
-//   }
-//   return (
-//     <Provider store={store}>
-//       <div className="container">
-//           <button onClick={changeTheme}>Change theme</button>
-//           <Chat />
-//       </div>
-//     </Provider>
-//   );
-// }
 
 export default App;

@@ -1,66 +1,14 @@
 .container {
-	&.dark {
-		background-color: $dark-bg;
-		.themeIcon {
-			background: $chatboxDarkBg;
-			.fas {
-				color: #f9d71c;
-			}
-		}
-		.chatBoxContainer {
-			background: $chatboxDarkBg;
-			.historyContainer {
-				border-bottom: 1px solid #fff;
-				input {
-					color: #fff;
-					background: $chatboxDarkBg;
-				}
-			}
-		}
-	}
-	&.light {
-		background-color: $light-bg;
-		.themeIcon {
-			background: $chatboxLightBg;
-			.fas {
-				color: $chatboxDarkBg;
-			}
-		}
-		.chatBoxContainer {
-			background: $chatboxLightBg;
-			.historyContainer {
-				border-bottom: 1px solid #000;
-				input {
-					color: #000;
-					background: $chatboxLightBg;
-				}
-			}
-		}
-	}
 	text-align: center;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	.themeIcon {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 13rem;
-		height: 8rem;
-		.themeTitle {
-			padding-top: 1rem;
-		}
-		.fas {
-			font-size: 2rem;
-			color: #f9d71c;
-		}
-	}
 	.chatBoxContainer {
+		height: 30rem;
+		max-width: 25rem;
 		display: inline-block;
-		max-width: 400px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
@@ -73,7 +21,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			height: 600px;
+			height: 100%;
 			overflow-y: scroll;
 			.internal {
 				animation: blinker 1s linear infinite;
@@ -86,31 +34,13 @@
 			}
 			input {
 				border: 0;
-				height: 20px;
-				width: 400px;
+				height: 1.1rem;
+				width: 30rem;
 				outline: none;
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-				font-size: 20px;
-				margin-top: 20px;
+				font-size: 1.2rem;
+				margin-top: 2rem;
 			}
 		}
-	}
-	/*
-        ----- RESPONSIVE ----
-    */
-
-	@media #{$media-minimum} {
-		padding: 2.5rem $padding-sides-minimum;
-		.chatBoxContainer {
-			padding: 3rem 2rem;
-		}
-	}
-
-	@media #{$media-small} {
-		padding: 3.75rem $padding-sides-small;
-	}
-
-	@media #{$media-normal-up} {
-		padding: 3rem $padding-sides-normal;
 	}
 }
