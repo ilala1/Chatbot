@@ -1,7 +1,7 @@
 const script = {
 	greetings: {
 		human: ['hello', 'hi', 'bonjour'],
-		response: "Please could you tell me what industry are you interested in? [Investment, Finance, Transport, Retail]"
+		response: "Please could you tell me what industry are you interested in? [Investment, Finance, Transport or Retail]"
 	},
 	industry: [
 		{
