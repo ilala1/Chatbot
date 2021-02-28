@@ -21,6 +21,12 @@ const loadingState = (dispatch) => {
             </div>})
 }
 
+const timeoutForResponse = (dispatch, type, payload) => {
+    setTimeout(() => {
+        dispatch({ type, payload})
+      }, 2000);
+}
+
 // sends message to bot - local file
 export const sendMessage = (message, script) => async (dispatch) => {
     const {greetings, industry} = script 
@@ -34,12 +40,8 @@ export const sendMessage = (message, script) => async (dispatch) => {
         for (let j of greetings.human) {
             humanResponses.push(j)
             if (input.includes(j)) {
-
                 loadingState(dispatch);
-
-                setTimeout(() => {
-                    dispatch({ type: MESSAGE_SUCCESS, payload: greetings.response})
-                  }, 2000);
+                timeoutForResponse(dispatch, MESSAGE_SUCCESS, greetings.response)
             }
         }
 
@@ -49,9 +51,7 @@ export const sendMessage = (message, script) => async (dispatch) => {
             if (input === i.name) {
                 console.log('industry true')
                 loadingState(dispatch);
-                setTimeout(() => {
-                    dispatch({ type: MESSAGE_SUCCESS, payload: i.response})
-                }, 2000);
+                timeoutForResponse(dispatch, MESSAGE_SUCCESS, i.response)
             }
         }
 
@@ -67,23 +67,16 @@ export const sendMessage = (message, script) => async (dispatch) => {
             console.log('human response')
             humanResponses.push(input)
             loadingState(dispatch);
-            setTimeout(() => {
-                dispatch({ type: MESSAGE_SUCCESS, payload: script.humanAgent})
-            }, 2000);
+            timeoutForResponse(dispatch, MESSAGE_SUCCESS, script.humanAgent)
         } else if (input === script.dontContactHuman) {
             humanResponses.push(input)
             loadingState(dispatch);
-            setTimeout(() => {
-                dispatch({ type: MESSAGE_FAIL, payload: script.greetings.response})
-            }, 2000);
+            timeoutForResponse(dispatch, MESSAGE_FAIL, script.greetings.response)
         }
 
         if (humanResponses.length === count || input === '') {
             loadingState(dispatch);
-
-            setTimeout(() => {
-                dispatch({ type: MESSAGE_FAIL, payload: script.noResponse})
-            }, 2000);
+            timeoutForResponse(dispatch, MESSAGE_FAIL, script.noResponse)
         }
 
 
