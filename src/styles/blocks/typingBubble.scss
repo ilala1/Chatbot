@@ -43,6 +43,16 @@
 	}
 }
 
+.internal {
+	animation: blinker 1s linear infinite;
+	text-align: right;
+	@keyframes blinker {
+		50% {
+			opacity: 0;
+		}
+	}
+}
+
 @keyframes blink {
 	50% {
 		opacity: 1;
