@@ -17,6 +17,9 @@
 			text-align: center;
 		}
 		.historyContainer {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			height: 600px;
 			overflow-y: scroll;
 			.internal {

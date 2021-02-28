@@ -27,6 +27,7 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
         <div className='chatBoxContainer'>
             <h1 className="title">Welcome to chatbot</h1>
             <div className="historyContainer">
+            <div className="chat">
                 <div className="chatBubble">
                     <img className="botIcon" src={bot} alt="bot icon" />
                     <div className='bot'>Hi, I'm bot!</div>
@@ -47,6 +48,7 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
                         <div className={msg.type}>{msg.message}</div>
                     </div>
                 )}
+            </div>
                 <input id="chatBox"
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyPress={handleClick}
