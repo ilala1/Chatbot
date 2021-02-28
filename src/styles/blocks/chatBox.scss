@@ -1,0 +1,61 @@
+.container {
+	text-align: center;
+	background-color: $bg;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.chatBoxContainer {
+		display: inline-block;
+		max-width: 400px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 3rem 5rem;
+		background: $chatboxBg;
+		.title {
+			text-align: center;
+		}
+		.historyContainer {
+			height: 600px;
+			overflow-y: scroll;
+			.internal {
+				animation: blinker 1s linear infinite;
+				text-align: right;
+				@keyframes blinker {
+					50% {
+						opacity: 0;
+					}
+				}
+			}
+			input {
+				border: 0;
+				border-bottom: 1px solid black;
+				height: 20px;
+				width: 400px;
+				outline: none;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 20px;
+				margin-top: 20px;
+			}
+		}
+	}
+	/*
+        ----- RESPONSIVE ----
+    */
+
+	@media #{$media-minimum} {
+		padding: 2.5rem $padding-sides-minimum;
+		.chatBoxContainer {
+			padding: 3rem 2rem;
+		}
+	}
+
+	@media #{$media-small} {
+		padding: 3.75rem $padding-sides-small;
+	}
+
+	@media #{$media-normal-up} {
+		padding: 3rem $padding-sides-normal;
+	}
+}

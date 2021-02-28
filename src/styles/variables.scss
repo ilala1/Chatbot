@@ -1,0 +1,16 @@
+$media-minimum: "screen and (max-width: 640px)";
+$media-small: "screen and (min-width: 641px) and (max-width: 1024px)";
+$media-small-down: "screen and (max-width: 1024px)";
+$media-normal: "screen and (min-width: 1025px) and (max-width: 1200px)";
+$media-normal-up: "screen and (min-width: 1025px)";
+$media-maximum: "screen and (min-width: 1401px)";
+
+$site-max-width: 75rem;
+
+$padding-sides-minimum: 1.25rem;
+$padding-sides-small: 2.5rem;
+$padding-sides-normal: calc(50vw - #{$site-max-width / 2});
+
+$bg: #282c34;
+$chatboxBg: #fefeff;
+$typingBubble-color-bg: #e6e7ed;
