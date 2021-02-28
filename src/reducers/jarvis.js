@@ -2,8 +2,16 @@ import { INPUT_SUCCESS, INPUT_FAIL, MESSAGE_SUCCESS, MESSAGE_FAIL, MESSAGE_LOADI
 
 // set initial state
 const initialState = {
-    messages: [],
-    loading: false
+    messages: []
+}
+
+const getRidofLoading = (messages) => {
+    for (let i = 0; i < messages.length; i++) {
+        if (messages[i].type === 'internal') {
+            const test = messages.indexOf(messages[i]);
+            messages.splice(test, 1);
+        }                
+    }
 }
 
 //switch  statement - update state
@@ -30,21 +38,18 @@ export default (state = initialState, action) => {
             };
         case MESSAGE_SUCCESS:
             console.log(messages);
-            for (let i = 0; i < messages.length; i++) {
-                console.log(messages[i]);
-                if (messages[i].type === 'internal') {
-                    const test = messages.indexOf(messages[i]);
-                    messages.splice(test, 1);
-                }                
-            }
+            getRidofLoading(messages);
             messages = [...messages, {message: payload, type: "bot"}]
             return {
                 ...state,
                 messages
             };
         case MESSAGE_FAIL:
+            getRidofLoading(messages);
+            messages = [...messages, {message: payload, type: "bot"}]
             return {
-                ...state
+                ...state,
+                messages
             };
         default:
             return {
