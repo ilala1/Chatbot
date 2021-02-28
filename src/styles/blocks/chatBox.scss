@@ -1,10 +1,63 @@
 .container {
+	&.dark {
+		background-color: $dark-bg;
+		.themeIcon {
+			background: $chatboxDarkBg;
+			.fas {
+				color: #f9d71c;
+			}
+		}
+		.chatBoxContainer {
+			background: $chatboxDarkBg;
+			.historyContainer {
+				border-bottom: 1px solid #fff;
+				input {
+					color: #fff;
+					background: $chatboxDarkBg;
+				}
+			}
+		}
+	}
+	&.light {
+		background-color: $light-bg;
+		.themeIcon {
+			background: $chatboxLightBg;
+			.fas {
+				color: $chatboxDarkBg;
+			}
+		}
+		.chatBoxContainer {
+			background: $chatboxLightBg;
+			.historyContainer {
+				border-bottom: 1px solid #000;
+				input {
+					color: #fff;
+					background: $chatboxLightBg;
+				}
+			}
+		}
+	}
 	text-align: center;
-	background-color: $bg;
 	min-height: 100vh;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	.themeIcon {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 13rem;
+		height: 8rem;
+		.themeTitle {
+			padding-top: 1rem;
+		}
+		.fas {
+			font-size: 2rem;
+			color: #f9d71c;
+		}
+	}
 	.chatBoxContainer {
 		display: inline-block;
 		max-width: 400px;
@@ -12,7 +65,7 @@
 		flex-direction: column;
 		justify-content: flex-end;
 		padding: 3rem 5rem;
-		background: $chatboxBg;
+
 		.title {
 			text-align: center;
 		}
@@ -33,7 +86,6 @@
 			}
 			input {
 				border: 0;
-				border-bottom: 1px solid black;
 				height: 20px;
 				width: 400px;
 				outline: none;

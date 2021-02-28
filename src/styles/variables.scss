@@ -11,6 +11,9 @@ $padding-sides-minimum: 1.25rem;
 $padding-sides-small: 2.5rem;
 $padding-sides-normal: calc(50vw - #{$site-max-width / 2});
 
-$bg: #282c34;
-$chatboxBg: #fefeff;
+$dark-bg: #282c34;
+$light-bg: #f4f4f4;
+
+$chatboxLightBg: #fff;
+$chatboxDarkBg: rgb(201, 201, 201);
 $typingBubble-color-bg: #e6e7ed;
