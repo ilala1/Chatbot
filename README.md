@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing all dependancies
+
+Start by 'npm i' in the root to install all the dependencies. 
+
 ## Available Scripts
 
 In the project directory, you can run:
