@@ -78,10 +78,6 @@ export const sendMessage = (message, script) => async (dispatch) => {
             loadingState(dispatch);
             timeoutForResponse(dispatch, MESSAGE_FAIL, script.noResponse)
         }
-
-
-
-
     } catch (err) {
         dispatch({ type: MESSAGE_FAIL}) 
     }
